@@ -4,6 +4,7 @@ A Python-based CLI tool designed to ingest, sanitize, process, and visualize dev
 
 ## 📁 Project Structure
 
+
 ```text
 device-log-summarizer/
 │
@@ -16,9 +17,36 @@ device-log-summarizer/
 ├── PROMPT_LOG.md             # Documentation of AI prompts used for Section 3
 └── README.md                 # Project documentation
 
- Features
+Features
 Data Sanitization (Section 1): Cleans mixed-type sensor readings by converting valid strings to floats, dropping negative values, None, and invalid entries, and capping values at 500.0. Handles edge cases like empty lists gracefully.
 
 Data Processing (Section 2): Ingests CSV telemetry data, groups by device_id, calculates total records, average temperature, and error counts. Filters out devices exceeding an average temperature of 80.0°C and exports the results to a structured JSON file.
 
 Data Visualization (Section 3): Utilizes matplotlib to generate a bar chart comparing average temperatures per device, featuring rotated labels and data annotations for readability.
+
+Prerequisites & Installation
+
+1. Clone this repository:
+git clone https://github.com/AhmedShehzad12/device-log-summarizer.git
+cd device-log-summarizer
+
+2. Install the required library for visualization:
+pip install matplotlib
+
+💻 How to Run
+You can run the scripts sequentially to see the entire pipeline in action.
+
+1. Run Data Sanitization (Test Cases):
+
+bash
+python section1_sanitizer.py
+2. Run Data Processor (Generates aggregated_output.json):
+
+bash
+python section2_processor.py
+3. Generate Chart (Generates temperature_chart.png):
+
+bash
+python section3_chart.py
+🤖 AI Collaboration
+As per the assessment requirements, AI (ChatGPT/Claude) was utilized for Section 3 (Charting). The initial code provided by the AI had formatting issues (overlapping X-axis labels). The code was reviewed, and fixes (label rotation, data annotations, tight_layout()) were applied to ensure a clean visualization. Full details are documented in PROMPT_LOG.md.
